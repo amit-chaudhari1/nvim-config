@@ -99,11 +99,6 @@ _G.packer_plugins = {
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/lightline.vim",
     url = "https://github.com/itchyny/lightline.vim"
   },
-  ["nord.nvim"] = {
-    loaded = true,
-    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nord.nvim",
-    url = "https://github.com/shaunsingh/nord.nvim"
-  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -148,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
-  },
-  ["vim-gutentags"] = {
-    loaded = true,
-    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/vim-gutentags",
-    url = "https://github.com/ludovicchabant/vim-gutentags"
   },
   ["vim-rhubarb"] = {
     loaded = true,

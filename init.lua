@@ -21,10 +21,9 @@ require('packer').startup(function()
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
   use 'tpope/vim-commentary' -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
   -- use 'joshdick/onedark.vim' -- Theme inspired by Atom
-  use 'shaunsingh/nord.nvim'
+  -- use 'shaunsingh/nord.nvim'
   use 'itchyny/lightline.vim' -- Fancier statusline -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'  -- Add git related info in the signs columns and popups
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Highlight, edit, and navigate code using a fast incremental parsing library
@@ -49,7 +48,7 @@ vim.opt.undofile = true --Case insensitive searching UNLESS /C or capital in sea
 vim.o.ignorecase = true
 vim.o.smartcase = true --Decrease update time
 vim.o.updatetime = 250
--- vim.wo.signcolumn = 'yes' --Set colorscheme (order is important here)
+vim.wo.signcolumn = 'yes' --Set colorscheme (order is important here)
 vim.o.termguicolors = true
 -- vim.g.onedark_terminal_italics = 2
 --vim.cmd [[colorscheme nord]] --Set statusbar
@@ -58,6 +57,7 @@ vim.g.lightline = {
   active = { left = { { 'mode', 'paste' }, { 'gitbranch', 'readonly', 'filename', 'modified' } } },
   component_function = { gitbranch = 'fugitive#head' },
   separator = { left= '', right= '' },
+  subseparator = { left= '', right= '' },
 }
 
 --Remap space as leader key
@@ -302,3 +302,16 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,10 +14,19 @@ vim.g.maplocalleader = " "
 
 -- TODO: leader timeout
 
+-- Auto completion of matching stuff
+-- inoremap("{", '{}<Esc>ha<CR><ESC>O')
+-- inoremap("`", '``<Esc>ha<CR><ESC>O')
+-- inoremap("[", '[]<Esc>ha')
+-- inoremap("(", '()<Esc>ha')
+-- inoremap("'", "''<Esc>ha")
+-- inoremap('"', '""<Esc>ha')
+-- inoremap('<', '<><Esc>ha')
+
 -- yank to clipboard.
 nnoremap("<leader>y", '"+y') -- yanking to clipboard from normal mode
 vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
-nnoremap('<leader>rc', ':so % <cr>') -- QOL thing for me to reload my config with leader rc
+nnoremap('<leader>rc', ':so % ~/.config/nvim/init.lua <cr>') -- QOL thing for me to reload my config with leader rc
 
 -- [[ Advanced Telescope Keymaps ]]
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files , { desc = '[S]earch [F]iles' })

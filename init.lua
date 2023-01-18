@@ -1,6 +1,7 @@
 require("utils")
 require("keymaps")
 require("options")
+require("lua-snip-config")
 --- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -33,6 +34,7 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code
   use 'nvim-treesitter/nvim-treesitter-textobjects' -- Additional textobjects for treesitter
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use { "williamboman/mason.nvim" } -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
   use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
   use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } } -- Autocompletion
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
@@ -73,9 +75,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 -- vim.g.karma_style = "day"
 
--- vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd [[colorscheme monochrome]]
-vim.cmd [[colorscheme karma]]
+-- vim.cmd [[colorscheme karma]]
 
 require('lspconfig').jsonls.setup {
   settings = {
@@ -169,7 +171,7 @@ require("nvim-tree").setup({
 
 require('lualine').setup {
   options = {
-    theme = 'karma',
+    theme = 'monochrome',
     component_separators = '',
     section_separators = { left = '', right = '' },
   },
@@ -354,7 +356,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- nvim-cmp supports additional completion capabilities
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Enable the following language servers
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'sumneko_lua' }
@@ -479,10 +481,14 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp'},
     { name = 'luasnip' },
   },
 }
+
+
+--mason config setup
+require("mason").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

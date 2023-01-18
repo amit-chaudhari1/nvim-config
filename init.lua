@@ -14,9 +14,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  use 'sbdchd/neoformat' --prettier
-  use 'amitchaudhari9121/karma.nvim'
-  use "b0o/schemastore.nvim"
   use {
     'kyazdani42/nvim-tree.lua',
     requires = {
@@ -24,27 +21,30 @@ require('packer').startup(function(use)
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
   }
-  use { "ellisonleao/gruvbox.nvim" }
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
+  use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } } -- Autocompletion
+  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
+  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
+  use 'sbdchd/neoformat' --prettier
+  use "b0o/schemastore.nvim" --provide access to JSON schemastore
+  use 'amitchaudhari9121/karma.nvim' -- colortheme
+  use 'ellisonleao/gruvbox.nvim' -- colortheme
+  use 'kdheepak/monochrome.nvim' -- colortheme
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
-  use 'kdheepak/monochrome.nvim'
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Add git related info in the signs columns and popups
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code
   use 'nvim-treesitter/nvim-treesitter-textobjects' -- Additional textobjects for treesitter
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use { "williamboman/mason.nvim" } -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
+  use 'williamboman/mason.nvim' -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
+  use 'williamboman/mason-lspconfig.nvim'
   use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
-  use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/cmp-nvim-lsp' } } -- Autocompletion
-  use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
   --  use 'mjlbach/onedark.nvim'                                                      -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
   if is_bootstrap then
     require('packer').sync()
@@ -73,6 +73,25 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
+-------------------------------------------------------------------             PAcker Ends
+
+--mason config setup
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-lspconfig").setup_handlers {
+  -- The first entry (without a key) will be the default handler
+  -- and will be called for each installed server that doesn't have
+  -- a dedicated handler.
+  function (server_name) -- default handler (optional)
+    require("lspconfig")[server_name].setup {}
+  end,
+  -- Next, you can provide a dedicated handler for specific servers.
+  -- For example, a handler override for the `rust_analyzer`:
+  ["rust_analyzer"] = function ()
+    require("rust-tools").setup {}
+  end
+}
+-------------------------------------------------------------------               mason ends
 -- vim.g.karma_style = "day"
 
 vim.cmd [[colorscheme gruvbox]]
@@ -487,8 +506,6 @@ cmp.setup {
 }
 
 
---mason config setup
-require("mason").setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

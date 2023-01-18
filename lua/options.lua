@@ -60,5 +60,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- vim.g.karma_style = "day"
 
-
+vim.cmd [[colorscheme gruvbox]]
+-- vim.cmd [[colorscheme monochrome]]
+-- vim.cmd [[colorscheme karma]]

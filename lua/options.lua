@@ -39,7 +39,6 @@ vim.o.smartcase = true
 vim.o.updatetime = 150
 vim.wo.signcolumn = 'yes'
 
--- Set colorscheme
 vim.o.termguicolors = true
 --vim.g.karma_style = "day"
 
@@ -64,10 +63,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- vim.g.karma_style = "day"
 
+-- Set colorscheme
 -- vim.cmd [[colorscheme gruvbox]]
-vim.cmd [[colorscheme monochrome]]
+-- vim.cmd [[colorscheme monochrome]]
 -- vim.cmd [[colorscheme karma]]
+vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[colorscheme tokyonight-storm]]
+-- vim.cmd [[colorscheme tokyonight]]
 
 -- transparent background for alacritty
 -- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]

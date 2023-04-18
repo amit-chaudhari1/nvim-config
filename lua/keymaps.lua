@@ -28,7 +28,6 @@ nnoremap("<leader>y", '"+y') -- yanking to clipboard from normal mode
 nnoremap("<leader>p", '"+p') -- yanking to clipboard from normal mode
 vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
 nnoremap('<leader>rc', ':so % ~/.config/nvim/init.lua <cr>') -- QOL thing for me to reload my config with leader rc
-nnoremap('<leader>ss', ':NvimTreeToggle <cr>') -- QOL thing for me to reload my config with leader rc
 
 -- nvim tree toggle
 nnoremap('<leader>t', require("nvim-tree.api").tree.toggle)

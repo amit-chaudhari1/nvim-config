@@ -30,10 +30,10 @@ require('packer').startup(function(use)
   use 'sbdchd/neoformat' --prettier
   use "b0o/schemastore.nvim" --provide access to JSON schemastore
   use 'amitchaudhari9121/karma.nvim' -- colorscheme
-  -- use 'ellisonleao/gruvbox.nvim' -- colorscheme
+  use 'ellisonleao/gruvbox.nvim' -- colorscheme
   use 'folke/tokyonight.nvim' --colorscheme
-  -- use 'kdheepak/monochrome.nvim' -- colorscheme
-  -- use 'mjlbach/onedark.nvim' -- colorscheme
+  use 'kdheepak/monochrome.nvim' -- colorscheme
+  use 'mjlbach/onedark.nvim' -- colorscheme
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github

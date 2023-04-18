@@ -39,13 +39,13 @@ cmp.setup {
     -- keyword_length
     -- max_item_count
     -- priority
-    { name = 'luasnip',priority = 1, max_item_count = 2, type},
-    { name = 'buffer', max_item_count = 5},
-    { name = 'path' },
-    { name = 'nvim_lua' },
-    { name = 'calc' },
-    { name = 'git' },
-    { name = 'nvim_lsp'},
+    { name = 'luasnip',priority = 1, max_item_count = 2 ,keyword_length=5 },
+    { name = 'buffer',keyword_length=5, max_item_count = 5},
+    { name = 'path' ,keyword_length=5},
+    { name = 'nvim_lua',keyword_length=5 },
+    { name = 'calc' ,keyword_length=5},
+    { name = 'git' ,keyword_length=5},
+    { name = 'nvim_lsp',keyword_length=2},
     { name = 'emoji'},
   },
 }

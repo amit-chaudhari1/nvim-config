@@ -24,14 +24,16 @@ require('packer').startup(function(use)
   use { 'hrsh7th/cmp-calc'}
   use { 'hrsh7th/cmp-emoji'}
   use { 'L3MON4D3/LuaSnip', requires = { 'saadparwaiz1/cmp_luasnip' } } -- Snippet Engine and Snippet Expansion
-  use {"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
+  use { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } } -- Fuzzy Finder (files, lsp, etc)  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
   use 'sbdchd/neoformat' --prettier
   use "b0o/schemastore.nvim" --provide access to JSON schemastore
-  use 'amitchaudhari9121/karma.nvim' -- colortheme
-  use 'ellisonleao/gruvbox.nvim' -- colortheme
-  use 'kdheepak/monochrome.nvim' -- colortheme
+  use 'amitchaudhari9121/karma.nvim' -- colorscheme
+  -- use 'ellisonleao/gruvbox.nvim' -- colorscheme
+  use 'folke/tokyonight.nvim' --colorscheme
+  -- use 'kdheepak/monochrome.nvim' -- colorscheme
+  -- use 'mjlbach/onedark.nvim' -- colorscheme
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
@@ -42,7 +44,6 @@ require('packer').startup(function(use)
   use 'williamboman/mason.nvim' -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
   use 'williamboman/mason-lspconfig.nvim'
   -- use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
-  --  use 'mjlbach/onedark.nvim'                                                      -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically

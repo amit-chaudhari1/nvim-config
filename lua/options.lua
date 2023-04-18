@@ -49,6 +49,8 @@ vim.o.scrolloff = 9
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+vim.o.hlsearch = true
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -62,6 +64,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- vim.g.karma_style = "day"
 
-vim.cmd [[colorscheme gruvbox]]
--- vim.cmd [[colorscheme monochrome]]
+-- vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme monochrome]]
 -- vim.cmd [[colorscheme karma]]
+-- vim.cmd [[colorscheme tokyonight-storm]]
+
+-- transparent background for alacritty
+-- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+-- vim.cmd [[hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE]]

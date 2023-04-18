@@ -41,13 +41,13 @@ nnoremap('<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]ea
 nnoremap('<leader>sgf', require('telescope.builtin').git_files, { desc = '[S]earch Git Files' })
 nnoremap('<leader>sgc', require('telescope.builtin').git_commits, { desc = '[S]earch Git commits' })
 
-vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch all the [B]uffers' })
+nnoremap('<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch all the [B]uffers' })
 
 -- [[ Basic Telescope Keymaps ]]
 nnoremap('<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 nnoremap('<leader><space>', require('telescope.builtin').keymaps, { desc = 'List out all the keymaps (native+customs)' })
 nnoremap('<leader>/',
-	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 32,
+	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
 		previewer = false, }) end, { desc = '[/] Fuzzily search in current buffer]' })
 
 -- Keymaps for better default experience

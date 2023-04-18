@@ -10,6 +10,7 @@ require('telescope-config')
 require('treesitter-config')
 require('gitsigns-config')
 require('nvim-tree-config')
+require('lsp-config')
 require('Comment').setup() -- noNeed for a custom setup felt yet
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
@@ -33,19 +34,6 @@ if vim.fn.has('wsl') == 1 then
     },
   }
 end
-
-require('lspconfig').jsonls.setup {
-  settings = {
-    json = {
-      schemas = require('schemastore').json.schemas {
-        select = {},
-        ignore = {},
-        replace = {},
-      },
-      validate = { enable = true },
-    },
-  },
-}
 
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')

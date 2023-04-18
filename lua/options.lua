@@ -72,5 +72,5 @@ vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[colorscheme tokyonight]]
 
 -- transparent background for alacritty
--- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
--- vim.cmd [[hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE]]
+vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+vim.cmd [[hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE]]

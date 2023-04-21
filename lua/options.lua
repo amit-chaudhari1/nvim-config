@@ -64,10 +64,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- vim.g.karma_style = "day"
 
 -- Set colorscheme
--- vim.cmd [[colorscheme gruvbox]]
+vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd [[colorscheme monochrome]]
 -- vim.cmd [[colorscheme karma]]
-vim.cmd [[colorscheme onedark]]
+-- vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[colorscheme tokyonight-storm]]
 -- vim.cmd [[colorscheme tokyonight]]
 

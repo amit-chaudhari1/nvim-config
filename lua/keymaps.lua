@@ -1,4 +1,5 @@
 local Utils = require("utils")
+local cmp = require("cmp")
 
 local exprnnoremap = Utils.exprnnoremap
 local nnoremap = Utils.nnoremap
@@ -40,7 +41,6 @@ nnoremap('<leader>sg', require('telescope.builtin').live_grep, '[S]earch by [G]r
 nnoremap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' )
 nnoremap('<leader>sgf', require('telescope.builtin').git_files, '[S]earch Git Files' )
 nnoremap('<leader>sgc', require('telescope.builtin').git_commits, '[S]earch Git commits' )
-
 nnoremap('<leader>sb', require('telescope.builtin').buffers, '[S]earch all the [B]uffers' )
 
 -- [[ Basic Telescope Keymaps ]]
@@ -63,10 +63,11 @@ exprnnoremap('j', 'v:count == 0 ? "gj" : "j"' )
 
 -- [[ LSP SPECIFIC KEYMAPS ]]
 local on_attach =  function (_,_)
-	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor') nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
-	nnoremap('gd', vim.lsp.buf.definition, 'go to the defintion')
-	nnoremap('gi', vim.lsp.buf.implementation, 'go to the implementation')
-	nnoremap('gr', require('telescope.builtin').lsp_references)
+	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor') 
+	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
+	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
+	nnoremap('gi', vim.lsp.buf.implementation, 'go to the Implementation')
+	nnoremap('gr', require('telescope.builtin').lsp_references, 'go to References')
 	nnoremap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'lsp document symbols')
 	nnoremap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols , 'lsp dynamic workspace symbols')
 	-- See `:help K` for why this keymap
@@ -84,4 +85,76 @@ local on_attach =  function (_,_)
 -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
 -- 	'Format current buffer with LSP' })
 end
+
+-- [[ COMPLETIONS KEYMAPS ]]
+-- {
+-- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+-- ['<C-Space>'] = cmp.mapping.complete(),
+-- ['<CR>'] = cmp.mapping.confirm {
+-- behavior = cmp.ConfirmBehavior.Replace,
+-- select = true,
+-- },
+-- ['<Tab>'] = cmp.mapping(function(fallback)
+-- if cmp.visible() then
+-- cmp.select_next_item()
+-- elseif luasnip.expand_or_jumpable() then
+-- luasnip.expand_or_jump()
+-- else
+-- fallback()
+-- end
+-- end, { 'i', 's' }),
+-- ['<S-Tab>'] = cmp.mapping(function(fallback)
+-- if cmp.visible() then
+-- cmp.select_prev_item()
+-- elseif luasnip.jumpable(-1) then
+-- luasnip.jump(-1)
+-- else
+-- fallback()
+-- end
+-- end, { 'i', 's' }),
+-- }
+
+-- local cmp_keymaps = function (_,_)
+-- end
+
+-- [[ TREE SITTER KEYMAPS ]]
+-- -- incremental keymaps
+-- init_selection = '<c-space>',
+-- node_incremental = '<c-space>',
+-- -- TODO: I'm not sure for this one.
+-- scope_incremental = '<c-s>',
+-- node_decremental = '<c-backspace>',
+-- -- textobject keymaps
+-- -- You can use the capture groups defined in textobjects.scm
+-- ['af'] = '@functon.outer',
+-- ['if'] = '@function.inner',
+-- ['ac'] = '@class.outer',
+-- ['ic'] = '@class.inner',
+-- -- move keymaps
+-- goto_next_start = {
+-- [']m'] = '@function.outer',
+-- [']]'] = '@class.outer',
+-- },
+-- goto_next_end = {
+-- [']M'] = '@function.outer',
+-- [']['] = '@class.outer',
+-- },
+-- goto_previous_start = {
+-- ['[m'] = '@function.outer',
+-- ['[['] = '@class.outer',
+-- },
+-- goto_previous_end = {
+-- ['[M'] = '@function.outer',
+-- ['[]'] = '@class.outer',
+-- },
+-- -- swap keymaps
+-- swap_next = {
+-- ['<leader>a'] = '@parameter.inner',
+-- },
+-- swap_previous = {
+-- ['<leader>A'] = '@parameter.inner',
+
+-- [[ FUGITIVE KEYMAPS ]]
+
 return on_attach

@@ -46,6 +46,6 @@ cmp.setup {
     { name = 'calc' ,keyword_length=2},
     { name = 'git' ,keyword_length=2},
     { name = 'nvim_lsp',keyword_length=2},
-    { name = 'emoji'},
+    { name = 'emoji' },
   },
 }

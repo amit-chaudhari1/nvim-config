@@ -9,6 +9,7 @@ local inoremap = Utils.inoremap
 local tnoremap = Utils.tnoremap
 local nmap = Utils.tnoremap
 
+local keymaps = {}
 -- Mapping Leader as Spacebar key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -61,8 +62,9 @@ nnoremap('<Space>', '<Nop>',{ silent = true }) -- QOL thing for me to reload my 
 exprnnoremap('k', 'v:count == 0 ? "gk" : "k"' )
 exprnnoremap('j', 'v:count == 0 ? "gj" : "j"' )
 
+
 -- [[ LSP SPECIFIC KEYMAPS ]]
-local on_attach =  function (_,_)
+function keymaps.on_attach (_,_)
 	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor') 
 	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
 	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
@@ -80,12 +82,15 @@ local on_attach =  function (_,_)
 	nnoremap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
 	nnoremap('<leader>wl', function()
 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, '[W]orkspace [L]ist Folders')
--- Create a command `:Format` local to the LSP buffer
--- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
--- 	'Format current buffer with LSP' })
+		end, '[W]orkspace [L]ist Folders')
+	-- Create a command `:Format` local to the LSP buffer
+	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
+	-- 	'Format current buffer with LSP' })
 end
 
+
+
+--
 -- [[ COMPLETIONS KEYMAPS ]]
 -- {
 -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -114,6 +119,7 @@ end
 -- end
 -- end, { 'i', 's' }),
 -- }
+
 
 -- local cmp_keymaps = function (_,_)
 -- end
@@ -157,4 +163,4 @@ end
 
 -- [[ FUGITIVE KEYMAPS ]]
 
-return on_attach
+return keymaps

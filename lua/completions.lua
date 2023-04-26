@@ -8,6 +8,10 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+    },
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -39,13 +43,17 @@ cmp.setup {
     -- keyword_length
     -- max_item_count
     -- priority
-    { name = 'luasnip',priority = 1, max_item_count = 2 ,keyword_length=5 },
-    { name = 'nvim_lua',keyword_length=2 },
-    { name = 'nvim_lsp',keyword_length=2},
-    { name = 'calc' ,keyword_length=2},
-    { name = 'git' ,keyword_length=2},
-    { name = 'buffer',keyword_length=2, max_item_count = 2},
-    { name = 'path' ,keyword_length=2},
+    { name = 'luasnip',priority = 1, max_item_count = 2, keyword_length=5 },
+    { name = 'nvim_lua', keyword_length=2 },
+    { name = 'nvim_lsp', keyword_length=2},
+    { name = 'calc', keyword_length=2},
+    { name = 'git', keyword_length=2},
+    { name = 'buffer', keyword_length=2, max_item_count = 2},
+    { name = 'path', keyword_length=2},
     { name = 'emoji' },
   },
 }
+
+-- Set up lspconfig.
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.

@@ -1,17 +1,18 @@
 require("utils")
 require("keymaps")
 require("options")
+require('lsp-config')
 require("lua-snip-config")
 require("completions")
 require("plugins")
 require('fancylualine')
-require('managermason')
 require('telescope-config')
 require('treesitter-config')
 require('gitsigns-config')
 require('nvim-tree-config')
-require('lsp-config')
 require('Comment').setup() -- noNeed for a custom setup felt yet
+require('formatter-config')
+
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
@@ -23,7 +24,7 @@ require('indent_blankline').setup {
   show_trailing_blankline_indent = false,
 }
 
--- workaround for wsl clipboard 
+-- workaround for wsl clipboard
 if vim.fn.has('wsl') == 1 then
   vim.g.clipboard = {
     name = "WslClipboard",

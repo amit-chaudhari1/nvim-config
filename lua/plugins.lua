@@ -43,12 +43,15 @@ require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'williamboman/mason.nvim' -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
   use 'williamboman/mason-lspconfig.nvim'
-  -- use 'williamboman/nvim-lsp-installer' -- Automatically install language servers to stdpath
+  use 'mfussenegger/nvim-dap'
+  use 'mfussenegger/nvim-lint'
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'mhartington/formatter.nvim'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
 
-  if is_bootstrap then
+    if is_bootstrap then
     require('packer').sync()
   end
 end)

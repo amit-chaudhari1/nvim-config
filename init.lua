@@ -13,7 +13,6 @@ require('nvim-tree-config')
 require('Comment').setup() -- noNeed for a custom setup felt yet
 require('formatter-config')
 
-
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`
 require('indent_blankline').setup {

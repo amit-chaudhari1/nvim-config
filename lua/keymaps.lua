@@ -7,7 +7,6 @@ local vnoremap = Utils.vnoremap
 local xnoremap = Utils.xnoremap
 local inoremap = Utils.inoremap
 local tnoremap = Utils.tnoremap
-local nmap = Utils.tnoremap
 
 local keymaps = {}
 -- Mapping Leader as Spacebar key
@@ -38,7 +37,7 @@ nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
 nnoremap('<leader>sf', require('telescope.builtin').find_files , '[S]earch [F]iles respect .gitignore' )
 nnoremap('<leader>sh', require('telescope.builtin').help_tags, '[S]earch [H]elp' )
 nnoremap('<leader>sw', require('telescope.builtin').grep_string, '[S]earch current [W]ord' )
-nnoremap('<leader>sg', require('telescope.builtin').live_grep, '[S]earch by [G]rep' )
+nnoremap('<leader>se', require('telescope.builtin').live_grep, '[S]earch by [G]rep' )
 nnoremap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' )
 nnoremap('<leader>sgf', require('telescope.builtin').git_files, '[S]earch Git Files' )
 nnoremap('<leader>sgc', require('telescope.builtin').git_commits, '[S]earch Git commits' )
@@ -65,7 +64,7 @@ exprnnoremap('j', 'v:count == 0 ? "gj" : "j"' )
 
 -- [[ LSP SPECIFIC KEYMAPS ]]
 function keymaps.on_attach (_,_)
-	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor') 
+	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor')
 	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
 	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
 	nnoremap('gi', vim.lsp.buf.implementation, 'go to the Implementation')
@@ -88,11 +87,37 @@ function keymaps.on_attach (_,_)
 	-- 	'Format current buffer with LSP' })
 end
 
-
-
 --
 -- [[ COMPLETIONS KEYMAPS ]]
--- {
+inoremap('<C-space>', cmp.mapping.complete(), 'Invoke CMP Completions which are LSP and LuaSnip exclusive')
+inoremap('<Tab>', function()
+	if cmp.visible() then
+		cmp.select_next_item()
+	elseif require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+		else cmp.mapping.complete()
+	end
+	end
+)
+inoremap('<S-Tab>', function()
+	if cmp.visible() then
+		cmp.select_prev_item()
+	elseif require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+		else cmp.mapping.complete()
+	end
+	end
+)
+inoremap('C-d',  cmp.mapping.scroll_docs (-4))
+inoremap('C-f',  cmp.mapping.scroll_docs (4))
+inoremap('<CR>', function()
+	if cmp.visible() then
+		cmp.mapping.confirm {behavior = cmp.ConfirmBehavior.Replace}
+	end
+	end, '')
+
+-- inoremap('<CR>',cmp.mapping.confirm(),'')
+
 -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
 -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
 -- ['<C-Space>'] = cmp.mapping.complete(),

@@ -27,54 +27,34 @@ cmp.setup {
     documentation = cmp.config.window.bordered(),
     },
 
-  -- mapping = {
-  --     ['<C-Space>'] = cmp.mapping.complete({
-  --       config = {
-  --         sources = sources
-  --       }
-  --     })
-  -- },
-   
-  -- mapping = cmp.mapping.preset.insert {
-  --   ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-  --   ['<C-f>'] = cmp.mapping.scroll_docs(4),
-  --   ['<C-Space>'] = cmp.mapping.complete(),
-  --   ['<CR>'] = cmp.mapping.confirm {
-  --     behavior = cmp.ConfirmBehavior.Replace,
-  --     select = true,
-  --   },
-  --   ['<Tab>'] = cmp.mapping(function(fallback)
-  --     if cmp.visible() then
-  --       cmp.select_next_item()
-  --     elseif luasnip.expand_or_jumpable() then
-  --       luasnip.expand_or_jump()
-  --     else
-  --       fallback()
-  --     end
-  --   end, { 'i', 's' }),
-  --   ['<S-Tab>'] = cmp.mapping(function(fallback)
-  --     if cmp.visible() then
-  --       cmp.select_prev_item()
-  --     elseif luasnip.jumpable(-1) then
-  --       luasnip.jump(-1)
-  --     else
-  --       fallback()
-  --     end
-  --   end, { 'i', 's' }),
-  -- },
-  sources = {
-    -- keyword_length
-    -- max_item_count
-    -- priority
-    { name = 'luasnip',priority = 1, max_item_count = 2, keyword_length=5 },
-    { name = 'nvim_lua', keyword_length=2 },
-    { name = 'nvim_lsp', keyword_length=2},
-    { name = 'calc', keyword_length=2},
-    { name = 'git', keyword_length=2},
-    { name = 'buffer', keyword_length=2, max_item_count = 2},
-    { name = 'path', keyword_length=2},
-    { name = 'emoji' },
+  mapping = cmp.mapping.preset.insert {
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   },
+  sources = sources,
 }
 
 -- Set up lspconfig.

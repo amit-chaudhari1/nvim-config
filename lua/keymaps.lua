@@ -87,36 +87,39 @@ function keymaps.on_attach (_,_)
 	-- 	'Format current buffer with LSP' })
 end
 
---
 -- [[ COMPLETIONS KEYMAPS ]]
-inoremap('<C-space>', cmp.mapping.complete(), 'Invoke CMP Completions which are LSP and LuaSnip exclusive')
-inoremap('<Tab>', function()
-	if cmp.visible() then
-		cmp.select_next_item()
-	elseif require('luasnip').expand_or_jumpable() then
-		require('luasnip').expand_or_jump()
-		else cmp.mapping.complete()
-	end
-	end
-)
-inoremap('<S-Tab>', function()
-	if cmp.visible() then
-		cmp.select_prev_item()
-	elseif require('luasnip').expand_or_jumpable() then
-		require('luasnip').expand_or_jump()
-		else cmp.mapping.complete()
-	end
-	end
-)
-inoremap('C-d',  cmp.mapping.scroll_docs (-4))
-inoremap('C-f',  cmp.mapping.scroll_docs (4))
-inoremap('<CR>', function()
-	if cmp.visible() then
-		cmp.mapping.confirm {behavior = cmp.ConfirmBehavior.Replace}
-	end
-	end, '')
+-- inoremap('<C-space>', cmp.mapping.complete(), 'Invoke CMP Completions which are LSP and LuaSnip exclusive')
+-- inoremap('<Tab>', function()
+-- 	if cmp.visible() then
+-- 		cmp.select_next_item()
+-- 	elseif require('luasnip').expand_or_jumpable() then
+-- 		require('luasnip').expand_or_jump()
+-- 		else cmp.mapping.complete()
+-- 	end
+-- 	end
+-- )
+-- inoremap('<S-Tab>', function()
+-- 	if cmp.visible() then
+-- 		cmp.select_prev_item()
+-- 	elseif require('luasnip').expand_or_jumpable() then
+-- 		require('luasnip').expand_or_jump()
+-- 		else cmp.mapping.complete()
+-- 	end
+-- 	end
+-- )
+--
+-- inoremap('C-d',  cmp.mapping.scroll_docs (-4))
+-- inoremap('C-f',  cmp.mapping.scroll_docs (4))
 
--- inoremap('<CR>',cmp.mapping.confirm(),'')
+-- inoremap('<CR>', function()
+-- 	if cmp.visible() then
+-- 		-- choose mapping
+-- 		return cmp.mapping.confirm ({behavior = cmp.ConfirmBehavior.Replace})
+-- 	else
+-- 		return vim.api.nvim_input("<CR>")
+-- 		-- pressed enter put in a carriage return line
+-- 	end end, '')
+
 
 -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
 -- ['<C-f>'] = cmp.mapping.scroll_docs(4),

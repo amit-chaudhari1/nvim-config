@@ -37,10 +37,10 @@ nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
 nnoremap('<leader>sf', require('telescope.builtin').find_files , '[S]earch [F]iles respect .gitignore' )
 nnoremap('<leader>sh', require('telescope.builtin').help_tags, '[S]earch [H]elp' )
 nnoremap('<leader>sw', require('telescope.builtin').grep_string, '[S]earch current [W]ord' )
-nnoremap('<leader>se', require('telescope.builtin').live_grep, '[S]earch by [G]rep' )
+nnoremap('<leader>se', require('telescope.builtin').live_grep, '[S]earch [E]verywhere' )
 nnoremap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' )
-nnoremap('<leader>sgf', require('telescope.builtin').git_files, '[S]earch Git Files' )
-nnoremap('<leader>sgc', require('telescope.builtin').git_commits, '[S]earch Git commits' )
+nnoremap('<leader>gf', require('telescope.builtin').git_files, 'Search [G]it [F]iles' )
+nnoremap('<leader>gc', require('telescope.builtin').git_commits, 'Search [G]it [C]ommits' )
 nnoremap('<leader>sb', require('telescope.builtin').buffers, '[S]earch all the [B]uffers' )
 
 -- [[ Basic Telescope Keymaps ]]

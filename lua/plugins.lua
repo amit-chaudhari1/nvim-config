@@ -44,6 +44,10 @@ require('packer').startup(function(use)
   use 'williamboman/mason.nvim' -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
   use 'williamboman/mason-lspconfig.nvim'
   use 'mfussenegger/nvim-dap'
+  use { 'rcarriga/nvim-dap-ui', requires = {'mfussenegger/nvim-dap'} }
+  use {'ldelossa/nvim-dap-projects'}
+  use {'folke/neodev.nvim'}
+  use({ "dnlhc/glance.nvim", config = function() require('glance').setup({ }) end, })
   use 'mfussenegger/nvim-lint'
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'mhartington/formatter.nvim'

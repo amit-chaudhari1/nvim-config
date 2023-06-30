@@ -134,6 +134,12 @@ _G.packer_plugins = {
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
+  ["glance.nvim"] = {
+    config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vglance\frequire\0" },
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/glance.nvim",
+    url = "https://github.com/dnlhc/glance.nvim"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
@@ -169,6 +175,11 @@ _G.packer_plugins = {
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/monochrome.nvim",
     url = "https://github.com/kdheepak/monochrome.nvim"
   },
+  ["neodev.nvim"] = {
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/neodev.nvim",
+    url = "https://github.com/folke/neodev.nvim"
+  },
   neoformat = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/neoformat",
@@ -189,6 +200,11 @@ _G.packer_plugins = {
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
   },
+  ["nvim-dap-projects"] = {
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-dap-projects",
+    url = "https://github.com/ldelossa/nvim-dap-projects"
+  },
   ["nvim-dap-ui"] = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
@@ -203,6 +219,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-surround"] = {
+    config = { "\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0" },
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -280,6 +302,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nvim-surround
+time([[Config for nvim-surround]], true)
+try_loadstring("\27LJ\2\n?\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\18nvim-surround\frequire\0", "config", "nvim-surround")
+time([[Config for nvim-surround]], false)
+-- Config for: glance.nvim
+time([[Config for glance.nvim]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vglance\frequire\0", "config", "glance.nvim")
+time([[Config for glance.nvim]], false)
 -- Conditional loads
 time([[Conditional loading of telescope-fzf-native.nvim]], true)
   require("packer.load")({"telescope-fzf-native.nvim"}, {}, _G.packer_plugins)

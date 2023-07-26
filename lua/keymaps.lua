@@ -30,7 +30,11 @@ nnoremap("<leader>p", '"+p') -- yanking to clipboard from normal mode
 vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
 nnoremap('<leader>rc', ':so % ~/.config/nvim/init.lua <cr>') -- QOL thing for me to reload my config with leader rc
 
--- nvim tree toggle
+-- nvim diagnostics
+-- nnoremap( '[d', 'vim.lsp.diagnostic.goto_prev()<CR>', opts)
+-- nnoremap( '[d', 'lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+-- nvimtree
 nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
 
 -- [[ Advanced Telescope Keymaps ]]

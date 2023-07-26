@@ -10,6 +10,10 @@ vim.g.loaded_2html_plugin = false
 vim.g.loaded_remote_plugins = false
 vim.g.did_load_filetypes = false
 
+--show the diagnostics in a popout window
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 -- Display title on top of tabs2
 vim.o.title = true
 
@@ -62,6 +66,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim.g.karma_style = "day"
+vim.g.neoformat_try_node_exe = 1
 
 -- Set colorscheme
 vim.cmd [[colorscheme gruvbox]]

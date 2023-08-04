@@ -155,6 +155,11 @@ _G.packer_plugins = {
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/karma.nvim",
     url = "https://github.com/amitchaudhari9121/karma.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -265,6 +270,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/amyth/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
     url = "https://github.com/b0o/schemastore.nvim"
+  },
+  ["sg.nvim"] = {
+    loaded = true,
+    path = "/home/amyth/.local/share/nvim/site/pack/packer/start/sg.nvim",
+    url = "https://github.com/sourcegraph/sg.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     cond = { true },

@@ -61,7 +61,6 @@ end
 
 require('lualine').setup {
   options = {
-    theme = 'karma',
     component_separators = '',
     section_separators = { left = '', right = '' },
   },

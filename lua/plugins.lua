@@ -11,6 +11,10 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function(use)
+    -- writing 
+    use("junegunn/goyo.vim") -- Distraction-free writing in Vim
+    use("junegunn/limelight.vim") -- Hyperfocus-writing in Vim
+    use('simrat39/rust-tools.nvim') -- rust tools
     use({
         "kyazdani42/nvim-tree.lua",
         requires = {"kyazdani42/nvim-web-devicons"},
@@ -18,13 +22,14 @@ require("packer").startup(function(use)
     })
     use({"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}) -- Add git related info in the signs columns and popups
     use({"hrsh7th/nvim-cmp", requires = {"hrsh7th/cmp-nvim-lsp"}}) -- Autocompletion
-    use({"hrsh7th/cmp-buffer"})
-    use({"hrsh7th/cmp-path"})
-    use({"hrsh7th/cmp-nvim-lua"})
-    use({"hrsh7th/cmp-calc"})
-    use({"hrsh7th/cmp-emoji"})
+    use({"hrsh7th/cmp-buffer"}) -- Autocompletion
+    use({"github/copilot.vim"}) -- Autocompletion
+    use({"hrsh7th/cmp-path"})   -- Autocompletion
+    use({"hrsh7th/cmp-nvim-lua"}) -- Autocompletion
+    use({"hrsh7th/cmp-calc"}) -- Autocompletion
+    use({"hrsh7th/cmp-emoji"}) -- Autocompletion
     use({"L3MON4D3/LuaSnip", requires = {"saadparwaiz1/cmp_luasnip"}}) -- Snippet Engine and Snippet Expansion
-    use({"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"})
+    use({"petertriho/cmp-git", requires = "nvim-lua/plenary.nvim"}) -- A Lua module for asynchronous programming using coroutines
     use({"nvim-telescope/telescope.nvim", requires = {"nvim-lua/plenary.nvim"}}) -- Fuzzy Finder (files, lsp, etc)  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -38,6 +43,7 @@ require("packer").startup(function(use)
     use("folke/tokyonight.nvim") -- colorscheme
     use("kdheepak/monochrome.nvim") -- colorscheme
     use("mjlbach/onedark.nvim") -- colorscheme
+    use({"catppuccin/nvim", as = "catppuccin"}) -- colorscheme
     use("wbthomason/packer.nvim") -- Package manager
     use("tpope/vim-fugitive") -- Git commands in nvim
     use("tpope/vim-rhubarb") -- Fugitive-companion to interact with github
@@ -46,18 +52,15 @@ require("packer").startup(function(use)
     use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter
     use("neovim/nvim-lspconfig") -- Collection of configurations for built-in LSP client
     use("williamboman/mason.nvim") -- mason.nvim manages LSP servers, DAP servers, linters, and formatters through a single interface.
-    use("williamboman/mason-lspconfig.nvim")
-    use("mfussenegger/nvim-dap")
-    use({"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}})
-    use({"ldelossa/nvim-dap-projects"})
+    use("williamboman/mason-lspconfig.nvim") -- mason-lspconfig.nvim is a plugin for mason.nvim that provides a collection of LSP configurations.
+    use("mfussenegger/nvim-dap") -- Debug Adapter Protocol client implementation for Neovim
+    use({"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}) -- UI for nvim-dap
+    use({"ldelossa/nvim-dap-projects"}) -- A plugin to manage projects for nvim-dap
     use({"folke/neodev.nvim"})
-    use({
-        "dnlhc/glance.nvim",
+    use({ "dnlhc/glance.nvim", -- glance.nvim is a plugin for Neovim that displays the context of the currently visible buffer contents in the statusline.
         config = function() require("glance").setup({}) end
     })
     use("mfussenegger/nvim-lint")
-    use("jose-elias-alvarez/null-ls.nvim")
-    use("mhartington/formatter.nvim")
     use("nvim-lualine/lualine.nvim") -- Fancier statusline
     use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
     use("tpope/vim-sleuth") -- Detect tabstop and shiftwidth automatically

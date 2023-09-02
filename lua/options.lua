@@ -65,20 +65,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- vim native fuzzy find helper
+vim.cmd[[set path+=**]]
+vim.cmd[[set wildignore+=**/node_modules/**]]
+vim.cmd[[set wildmenu]]
+
 -- vim.g.karma_style = "day"
 vim.g.neoformat_try_node_exe = 1
 
 -- Set colorscheme
 -- vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd [[colorscheme monochrome]]
--- vim.cmd [[colorscheme karma]]
+vim.cmd [[colorscheme karma]]
 -- vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[colorscheme tokyonight-storm]]
 -- vim.cmd [[colorscheme tokyonight]]
-vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "catppuccin"
 
 -- transparent background for alacritty
--- vim.cmd [[hi! Normal ctermbg=NONE guibg=NONE]]
+-- vim.cmd [[hi! Normal ctermbg=NONE  guibg=NONE]]
 -- vim.cmd [[hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE]]
 -- vim.cmd [[hi! SignColumn ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! LineNr ctermbg=NONE guibg=NONE]]
@@ -97,14 +102,14 @@ vim.cmd.colorscheme "catppuccin"
 -- vim.cmd [[hi! TabLine ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! TabLineFill ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! TabLineSel ctermbg=NONE guibg=NONE]]
--- vim.cmd [[hi! StatusLine ctermbg=NONE guibg=NONE]]
--- vim.cmd [[hi! StatusLineNC ctermbg=NONE guibg=NONE]]
+-- -- vim.cmd [[hi! StatusLine ctermbg=NONE guibg=NONE]]
+-- -- vim.cmd [[hi! StatusLineNC ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! SpellBad ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! SpellCap ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! SpellLocal ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! SpellRare ctermbg=NONE guibg=NONE]]
--- vim.cmd [[hi! Visual ctermbg=NONE guibg=NONE]]
--- vim.cmd [[hi! VisualNOS ctermbg=NONE guibg=NONE]]
+-- -- vim.cmd [[hi! Visual ctermbg=NONE guibg=NONE]]
+-- -- vim.cmd [[hi! VisualNOS ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! QuickFixLine ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! Debug ctermbg=NONE guibg=NONE]]
 -- vim.cmd [[hi! DebugBreakpoint ctermbg=NONE guibg=NONE]]

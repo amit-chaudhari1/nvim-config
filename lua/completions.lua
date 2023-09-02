@@ -19,6 +19,7 @@ cmp.setup {
     },
 
     mapping = cmp.mapping.preset.insert {
+        -- TODO: move to keymaps pelase
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -48,6 +49,3 @@ cmp.setup {
     sources = sources
 }
 
--- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.

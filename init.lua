@@ -1,4 +1,5 @@
 require("utils")
+require("dapui").setup()
 require("keymaps")
 require("options")
 require('lsp-config')
@@ -12,6 +13,9 @@ require('gitsigns-config')
 require('nvim-tree-config')
 require('Comment').setup() -- noNeed for a custom setup felt yet
 require('formatter-config')
+require('neodev').setup({
+    library = { plugins = { "nvim-dap-ui" }, types = true },
+    })
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help indent_blankline.txt`

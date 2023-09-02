@@ -15,6 +15,7 @@ require("packer").startup(function(use)
     use("junegunn/goyo.vim") -- Distraction-free writing in Vim
     use("junegunn/limelight.vim") -- Hyperfocus-writing in Vim
     use('simrat39/rust-tools.nvim') -- rust tools
+    use("xiyaowong/transparent.nvim") -- transparent
     use({
         "kyazdani42/nvim-tree.lua",
         requires = {"kyazdani42/nvim-web-devicons"},

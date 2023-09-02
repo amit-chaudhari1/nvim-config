@@ -1,5 +1,6 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+-- TODO: I'd like to move the keymaps to keymaps.lua
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   -- list of languages : https://tree-sitter.github.io/tree-sitter/

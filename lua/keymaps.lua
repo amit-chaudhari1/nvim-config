@@ -8,7 +8,6 @@ local xnoremap = Utils.xnoremap
 local inoremap = Utils.inoremap
 local tnoremap = Utils.tnoremap
 
-local keymaps = {}
 -- Mapping Leader as Spacebar key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -31,8 +30,8 @@ vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
 nnoremap('<leader>rc', ':so % ~/.config/nvim/init.lua <cr>') -- QOL thing for me to reload my config with leader rc
 
 -- nvim diagnostics
--- nnoremap( '[d', 'vim.lsp.diagnostic.goto_prev()<CR>', opts)
--- nnoremap( '[d', 'lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+nnoremap( '[d', 'vim.lsp.diagnostic.goto_prev()<CR>', '')
+nnoremap( '[d', 'lua vim.lsp.diagnostic.goto_next()<CR>', '')
 
 -- nvimtree
 nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
@@ -53,19 +52,45 @@ nnoremap('<leader><space>', require('telescope.builtin').keymaps, 'List out all 
 nnoremap('<leader>/',
 	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
 		previewer = false, }) end, '[/] Fuzzily search in current buffer]' )
+nnoremap('<leader>dt', require("dapui").toggle, 'Toggle DAP UI')
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vnoremap('<Space>', '<Nop>',{ silent = true }) -- yanking to clipboard from visual mode
-nnoremap('<Space>', '<Nop>',{ silent = true }) -- QOL thing for me to reload my config with leader rc
+-- vnoremap('<Space>', '<Nop>',{ silent = true }) -- yanking to clipboard from visual mode
+-- nnoremap('<Space>', '<Nop>',{ silent = true }) -- QOL thing for me to reload my config with leader rc
 -- Remap for dealing with word wrap
 
 exprnnoremap('k', 'v:count == 0 ? "gk" : "k"' )
 exprnnoremap('j', 'v:count == 0 ? "gj" : "j"' )
 
 
+-- if vim.lsp.buf_get_clients(0) > 0 then
+-- 	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor')
+-- 	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
+-- 	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
+-- 	nnoremap('gi', vim.lsp.buf.implementation, 'go to the Implementation')
+-- 	nnoremap('gr', require('telescope.builtin').lsp_references, 'go to References')
+-- 	nnoremap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'lsp document symbols')
+-- 	nnoremap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols , 'lsp dynamic workspace symbols')
+-- 	-- See `:help K` for why this keymap
+-- 	nnoremap('K', vim.lsp.buf.hover, 'Hover Documentation')
+-- 	nnoremap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+-- 	-- Lesser used LSP functionality
+-- 	nnoremap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+-- 	nnoremap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+-- 	nnoremap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+-- 	nnoremap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+-- 	nnoremap('<leader>wl', function()
+-- 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+-- 		end, '[W]orkspace [L]ist Folders')
+-- 	-- Create a command `:Format` local to the LSP buffer
+-- 	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
+-- 	-- 	'Format current buffer with LSP' })
+-- end
+
+local keymaps = {}
 -- [[ LSP SPECIFIC KEYMAPS ]]
 function keymaps.on_attach (_,_)
 	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor')

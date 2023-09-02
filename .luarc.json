@@ -1,0 +1,17 @@
+{
+    "runtime.version": "LuaJIT",
+    "runtime.special": {
+        "love.filesystem.load": "loadfile"
+    },
+    "workspace.library": [
+        "${3rd}/love2d/library",
+        "${3rd}/Jass/library",
+        "${3rd}/bee/library",
+        "${3rd}/OpenResty/library",
+        "${3rd}/skynet/library",
+        "${3rd}/lovr/library"
+    ],
+    "diagnostics.globals": [
+        "ngx"
+    ]
+}

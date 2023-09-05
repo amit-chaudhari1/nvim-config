@@ -13,8 +13,10 @@ end
 require("packer").startup(function(use)
     -- writing 
     use("junegunn/goyo.vim") -- Distraction-free writing in Vim
+    use {"saadparwaiz1/cmp_luasnip"}
+    use("rafamadriz/friendly-snippets")
     use("junegunn/limelight.vim") -- Hyperfocus-writing in Vim
-    use('simrat39/rust-tools.nvim') -- rust tools
+    use("simrat39/rust-tools.nvim") -- rust tools
     use("xiyaowong/transparent.nvim") -- transparent
     use({
         "kyazdani42/nvim-tree.lua",
@@ -24,8 +26,57 @@ require("packer").startup(function(use)
     use({"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}}) -- Add git related info in the signs columns and popups
     use({"hrsh7th/nvim-cmp", requires = {"hrsh7th/cmp-nvim-lsp"}}) -- Autocompletion
     use({"hrsh7th/cmp-buffer"}) -- Autocompletion
-    use({"github/copilot.vim"}) -- Autocompletion
-    use({"hrsh7th/cmp-path"})   -- Autocompletion
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                panel = {
+                    enabled = true,
+                    auto_refresh = true,
+                    keymap = {
+                        jump_prev = "[[",
+                        jump_next = "]]",
+                        accept = "<CR>",
+                        refresh = "gr",
+                        open = "<M-CR>"
+                    },
+                    layout = {
+                        position = "right", -- | top | left | right
+                        ratio = 0.4
+                    }
+                },
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    debounce = 35,
+                    keymap = {
+                        accept = "<C-l>",
+                        accept_word = false,
+                        accept_line = false,
+                        next = "<M-]>",
+                        prev = "<M-[>",
+                        dismiss = "<C-]>"
+                    }
+                },
+                filetypes = {
+                    yaml = false,
+                    markdown = false,
+                    help = false,
+                    gitcommit = false,
+                    gitrebase = false,
+                    hgcommit = false,
+                    svn = false,
+                    cvs = false,
+                    ["."] = false
+                },
+                copilot_node_command = 'node', -- Node.js version must be > 16.x
+                server_opts_overrides = {}
+            })
+        end
+    }
+    use({"hrsh7th/cmp-path"}) -- Autocompletion
     use({"hrsh7th/cmp-nvim-lua"}) -- Autocompletion
     use({"hrsh7th/cmp-calc"}) -- Autocompletion
     use({"hrsh7th/cmp-emoji"}) -- Autocompletion
@@ -58,7 +109,8 @@ require("packer").startup(function(use)
     use({"rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}}) -- UI for nvim-dap
     use({"ldelossa/nvim-dap-projects"}) -- A plugin to manage projects for nvim-dap
     use({"folke/neodev.nvim"})
-    use({ "dnlhc/glance.nvim", -- glance.nvim is a plugin for Neovim that displays the context of the currently visible buffer contents in the statusline.
+    use({
+        "dnlhc/glance.nvim", -- glance.nvim is a plugin for Neovim that displays the context of the currently visible buffer contents in the statusline.
         config = function() require("glance").setup({}) end
     })
     use("mfussenegger/nvim-lint")

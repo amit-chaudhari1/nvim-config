@@ -1,14 +1,21 @@
 -- COMPLETIONS AND SNIPPET SETUP
 local cmp = require('cmp')
 
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local luasnip = require 'luasnip'
 local sources = {
     -- keyword_length
     -- max_item_count
     -- priority
-    {name = 'luasnip', priority = 1, max_item_count = 2}, {name = 'nvim_lua'},
-    {name = 'nvim_lsp'}, {name = 'calc'}, {name = 'git'},
-    {name = 'buffer', max_item_count = 2}, {name = 'path'}, {name = 'emoji'}
+    -- {name = 'nvim_lsp'},
+    {name = 'calc'},
+    -- {name = 'git'},
+    {name = 'luasnip', max_item_count = 5},
+    {name = 'nvim_lua'},
+    {name = 'buffer', max_item_count = 5},
+    {name = 'path'},
+    {name = 'emoji'}
 }
 
 cmp.setup {
@@ -27,15 +34,17 @@ cmp.setup {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
         },
-        -- ['<Tab>'] = cmp.mapping(function(fallback)
-        --   if cmp.visible() then
-        --     cmp.select_next_item()
-        --   elseif luasnip.expand_or_jumpable() then
-        --     luasnip.expand_or_jump()
-        --   else
-        --     fallback()
-        --   end
-        -- end, { 'i', 's' }),
+        -- ["<Tab>"] = cmp.mapping.select_next_item({behavior=cmp.SelectBehavior.Insert}),
+        -- ["<S-Tab>"] = cmp.mapping.select_prev_item({behavior=cmp.SelectBehavior.Insert}),
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, {'i', 's'}),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()

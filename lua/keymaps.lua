@@ -27,7 +27,6 @@ vim.g.maplocalleader = " "
 nnoremap("<leader>y", '"+y') -- yanking to clipboard from normal mode
 nnoremap("<leader>p", '"+p') -- yanking to clipboard from normal mode
 vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
-nnoremap('<leader>rc', ':so % ~/.config/nvim/init.lua <cr>') -- QOL thing for me to reload my config with leader rc
 
 -- nvim diagnostics
 nnoremap( '[d', 'vim.lsp.diagnostic.goto_prev()<CR>', '')

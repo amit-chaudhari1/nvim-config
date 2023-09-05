@@ -13,3 +13,6 @@
         - suggestions like the ones you get in VS IDE
 
 - [ ] the auto complete from cmp can be more specific and it should be able to do a lot more completions without asking me for them j
+
+
+

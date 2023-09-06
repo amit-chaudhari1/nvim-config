@@ -1,5 +1,5 @@
-local Utils = require("utils")
-local cmp = require("cmp")
+local Utils = require("amyth.utils")
+-- local cmp = require("cmp")
 
 local exprnnoremap = Utils.exprnnoremap
 local nnoremap = Utils.nnoremap
@@ -33,25 +33,25 @@ nnoremap( '[d', 'vim.lsp.diagnostic.goto_prev()<CR>', '')
 nnoremap( '[d', 'lua vim.lsp.diagnostic.goto_next()<CR>', '')
 
 -- nvimtree
-nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
+-- nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
 
 -- [[ Advanced Telescope Keymaps ]]
-nnoremap('<leader>sf', require('telescope.builtin').find_files , '[S]earch [F]iles respect .gitignore' )
-nnoremap('<leader>sh', require('telescope.builtin').help_tags, '[S]earch [H]elp' )
-nnoremap('<leader>sw', require('telescope.builtin').grep_string, '[S]earch current [W]ord' )
-nnoremap('<leader>se', require('telescope.builtin').live_grep, '[S]earch [E]verywhere' )
-nnoremap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' )
-nnoremap('<leader>gf', require('telescope.builtin').git_files, 'Search [G]it [F]iles' )
-nnoremap('<leader>gc', require('telescope.builtin').git_commits, 'Search [G]it [C]ommits' )
-nnoremap('<leader>sb', require('telescope.builtin').buffers, '[S]earch all the [B]uffers' )
-
--- [[ Basic Telescope Keymaps ]]
-nnoremap('<leader>?', require('telescope.builtin').oldfiles, '[?] Find recently opened files' )
-nnoremap('<leader><space>', require('telescope.builtin').keymaps, 'List out all the keymaps (native+customs)' )
-nnoremap('<leader>/',
-	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-		previewer = false, }) end, '[/] Fuzzily search in current buffer]' )
-nnoremap('<leader>dt', require("dapui").toggle, 'Toggle DAP UI')
+-- nnoremap('<leader>sf', require('telescope.builtin').find_files , '[S]earch [F]iles respect .gitignore' )
+-- nnoremap('<leader>sh', require('telescope.builtin').help_tags, '[S]earch [H]elp' )
+-- nnoremap('<leader>sw', require('telescope.builtin').grep_string, '[S]earch current [W]ord' )
+-- nnoremap('<leader>se', require('telescope.builtin').live_grep, '[S]earch [E]verywhere' )
+-- nnoremap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' )
+-- nnoremap('<leader>gf', require('telescope.builtin').git_files, 'Search [G]it [F]iles' )
+-- nnoremap('<leader>gc', require('telescope.builtin').git_commits, 'Search [G]it [C]ommits' )
+-- nnoremap('<leader>sb', require('telescope.builtin').buffers, '[S]earch all the [B]uffers' )
+-- 
+-- -- [[ Basic Telescope Keymaps ]]
+-- nnoremap('<leader>?', require('telescope.builtin').oldfiles, '[?] Find recently opened files' )
+-- nnoremap('<leader><space>', require('telescope.builtin').keymaps, 'List out all the keymaps (native+customs)' )
+-- nnoremap('<leader>/',
+-- 	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+-- 		previewer = false, }) end, '[/] Fuzzily search in current buffer]' )
+-- nnoremap('<leader>dt', require("dapui").toggle, 'Toggle DAP UI')
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -91,29 +91,29 @@ exprnnoremap('j', 'v:count == 0 ? "gj" : "j"' )
 
 local keymaps = {}
 -- [[ LSP SPECIFIC KEYMAPS ]]
-function keymaps.on_attach (_,_)
-	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor')
-	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
-	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
-	nnoremap('gi', vim.lsp.buf.implementation, 'go to the Implementation')
-	nnoremap('gr', require('telescope.builtin').lsp_references, 'go to References')
-	nnoremap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'lsp document symbols')
-	nnoremap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols , 'lsp dynamic workspace symbols')
-	-- See `:help K` for why this keymap
-	nnoremap('K', vim.lsp.buf.hover, 'Hover Documentation')
-	nnoremap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-	-- Lesser used LSP functionality
-	nnoremap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-	nnoremap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-	nnoremap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-	nnoremap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-	nnoremap('<leader>wl', function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, '[W]orkspace [L]ist Folders')
-	-- Create a command `:Format` local to the LSP buffer
-	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
-	-- 	'Format current buffer with LSP' })
-end
+-- function keymaps.on_attach (_,_)
+-- 	nnoremap('<leader>rn', vim.lsp.buf.rename, 'rename the symbol under cursor')
+-- 	nnoremap('<leader>ca', vim.lsp.buf.code_action, 'list all the code actions')
+-- 	nnoremap('gd', vim.lsp.buf.definition, 'go to the Defintion')
+-- 	nnoremap('gi', vim.lsp.buf.implementation, 'go to the Implementation')
+-- 	nnoremap('gr', require('telescope.builtin').lsp_references, 'go to References')
+-- 	nnoremap('<leader>ds', require('telescope.builtin').lsp_document_symbols, 'lsp document symbols')
+-- 	nnoremap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols , 'lsp dynamic workspace symbols')
+-- 	-- See `:help K` for why this keymap
+-- 	nnoremap('K', vim.lsp.buf.hover, 'Hover Documentation')
+-- 	nnoremap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+-- 	-- Lesser used LSP functionality
+-- 	nnoremap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+-- 	nnoremap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+-- 	nnoremap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+-- 	nnoremap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+-- 	nnoremap('<leader>wl', function()
+-- 		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+-- 		end, '[W]orkspace [L]ist Folders')
+-- 	-- Create a command `:Format` local to the LSP buffer
+-- 	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
+-- 	-- 	'Format current buffer with LSP' })
+-- end
 
 -- [[ COMPLETIONS KEYMAPS ]]
 -- inoremap('<C-space>', cmp.mapping.complete(), 'Invoke CMP Completions which are LSP and LuaSnip exclusive')

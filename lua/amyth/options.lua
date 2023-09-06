@@ -76,11 +76,10 @@ vim.g.neoformat_try_node_exe = 1
 -- Set colorscheme
 -- vim.cmd [[colorscheme gruvbox]]
 -- vim.cmd [[colorscheme monochrome]]
-vim.cmd [[colorscheme karma]]
+-- vim.cmd [[colorscheme karma]]
 -- vim.cmd [[colorscheme onedark]]
 -- vim.cmd [[colorscheme tokyonight-storm]]
 -- vim.cmd [[colorscheme tokyonight]]
--- vim.cmd.colorscheme "catppuccin"
 
 -- transparent background for alacritty
 -- vim.cmd [[hi! Normal ctermbg=NONE  guibg=NONE]]

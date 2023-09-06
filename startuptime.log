@@ -1,0 +1,3 @@
+Benchmark 1: nvim init.lua  --headless +qa
+ Time (mean ñ å):     206.9 ms ñ  10.6 ms    [User: 90.8 ms, System: 45.3 ms]
+ Range (min . max):   183.8 ms . 218.9 ms    14 runs

@@ -2,14 +2,11 @@
 -- install lazy if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
+        lazypath
+    })
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -21,23 +18,19 @@ vim.opt.rtp:prepend(lazypath)
 -- opts: see Configuration (optional)
 
 require("lazy").setup({
-"junegunn/goyo.vim", -- Distraction-free writing in Vim
-"saadparwaiz1/cmp_luasnip",
-"rafamadriz/friendly-snippets",
-"junegunn/limelight.vim", -- Hyperfocus-writing in Vim
-
-"simrat39/rust-tools.nvim", -- rust tools
-
-"xiyaowong/transparent.nvim", -- transparent
-
+    { "junegunn/goyo.vim" },
+    { "saadparwaiz1/cmp_luasnip" },
+    { "rafamadriz/friendly-snippets" },
+    { "junegunn/limelight.vim" },
+    { "simrat39/rust-tools.nvim" },
+    { "xiyaowong/transparent.nvim" },
     {
         "kyazdani42/nvim-tree.lua",
         dependencies = {"kyazdani42/nvim-web-devicons"},
         tag = "nightly"
-    },
-    {"lewis6991/gitsigns.nvim", dependencies = {"nvim-lua/plenary.nvim"}}, -- Add git related info in the signs columns and popups
-    {"hrsh7th/nvim-cmp", dependencies = {"hrsh7th/cmp-nvim-lsp"}}, -- Autocompletion
-    {"hrsh7th/cmp-buffer"}, -- Autocompletion
+    }, {"lewis6991/gitsigns.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
+    {"hrsh7th/nvim-cmp", dependencies = {"hrsh7th/cmp-nvim-lsp"}},
+    {"hrsh7th/cmp-buffer"},
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
@@ -55,7 +48,7 @@ require("lazy").setup({
                         open = "<M-CR>"
                     },
                     layout = {
-                        position = "right", -- | top | left | right
+                        position = "right",
                         ratio = 0.4
                     }
                 },
@@ -83,121 +76,111 @@ require("lazy").setup({
                     cvs = false,
                     ["."] = false
                 },
-                copilot_node_command = 'node', -- Node.js version must be > 16.x
+                copilot_node_command = 'node',
                 server_opts_overrides = {}
             })
         end
-    },
-{"hrsh7th/cmp-path"}, -- Autocompletion
-
-{"hrsh7th/cmp-nvim-lua"}, -- Autocompletion
-{"hrsh7th/cmp-calc"}, -- Autocompletion
-{"hrsh7th/cmp-emoji"}, -- Autocompletion
-{"L3MON4D3/LuaSnip", dependencies = {"saadparwaiz1/cmp_luasnip"}}, -- Snippet Engine and Snippet Expansion
-{"petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim"}, -- A Lua module for asynchronous programming using coroutines
-{"nvim-telescope/telescope.nvim", dependencies = {"nvim-lua/plenary.nvim"}}, -- Fuzzy Finder (files, lsp, etc)  -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-{
+    }, {"hrsh7th/cmp-path"},
+    {"hrsh7th/cmp-nvim-lua"},
+    {"hrsh7th/cmp-calc"},
+    {"hrsh7th/cmp-emoji"},
+    {"L3MON4D3/LuaSnip", dependencies = {"saadparwaiz1/cmp_luasnip"}},
+    {"petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim"},
+    {"nvim-telescope/telescope.nvim", dependencies = {"nvim-lua/plenary.nvim"}},
+    {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         cond = vim.fn.executable("make") == 1
-    },
-"sbdchd/neoformat", -- prettier
-"b0o/schemastore.nvim", -- provide access to JSON schemastore
-"amitchaudhari9121/karma.nvim", -- colorscheme
-"ellisonleao/gruvbox.nvim", -- colorscheme
-"folke/tokyonight.nvim", -- colorscheme
-"kdheepak/monochrome.nvim", -- colorscheme
-"mjlbach/onedark.nvim", -- colorscheme
-{"catppuccin/nvim", name = "catppuccin"}, -- colorscheme
-"tpope/vim-fugitive", -- Git commands in nvim
-"tpope/vim-rhubarb", -- Fugitive-companion to interact with github
-"numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
-"nvim-treesitter/nvim-treesitter", -- Highlight, edit, and navigate code
-"nvim-treesitter/nvim-treesitter-textobjects", -- Additional textobjects for treesitter
-"neovim/nvim-lspconfig", -- Collection of configurations for built-in LSP client
-"williamboman/mason.nvim", 
-"williamboman/mason-lspconfig.nvim",
-"mfussenegger/nvim-dap", 
-{"rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"}}, -- UI for nvim-dap
-{"ldelossa/nvim-dap-projects"}, -- A plugin to manage projects for nvim-dap
-{"folke/neodev.nvim"},
-{
-        "dnlhc/glance.nvim", -- glance.nvim is a plugin for Neovim that displays the context of the currently visible buffer contents in the statusline.
+    }, "sbdchd/neoformat",
+    { "b0o/schemastore.nvim" },
+    { "amitchaudhari9121/karma.nvim" },
+    { "ellisonleao/gruvbox.nvim" },
+    { "folke/tokyonight.nvim" },
+    { "kdheepak/monochrome.nvim" },
+    { "mjlbach/onedark.nvim" },
+    {"catppuccin/nvim", name = "catppuccin"},
+    { "tpope/vim-fugitive" },
+    { "tpope/vim-rhubarb" },
+    { "numToStr/Comment.nvim" },
+    { "nvim-treesitter/nvim-treesitter" },
+    { "nvim-treesitter/nvim-treesitter-textobjects" },
+    { "neovim/nvim-lspconfig" },
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "mfussenegger/nvim-dap" },
+    {"rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"}},
+    {"ldelossa/nvim-dap-projects"},
+    {"folke/neodev.nvim"}, {
+        "dnlhc/glance.nvim",
         config = function() require("glance").setup({}) end
-    },
-"mfussenegger/nvim-lint",
-"nvim-lualine/lualine.nvim", -- Fancier statusline
-"lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
-"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-{
+    }, "mfussenegger/nvim-lint", "nvim-lualine/lualine.nvim",
+    { "lukas-reineke/indent-blankline.nvim" },
+    { "tpope/vim-sleuth" },
+    {
         "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
         dependencies = {"nvim-lua/plenary.nvim"}
-    }, -- pops out lazygit
-{
+    },
+    {
         "folke/trouble.nvim",
         dependencies = {"kyazdani42/nvim-web-devicons"},
         opts = {
-            position = "bottom", -- position of the list can be: bottom, top, left, right
-            height = 10, -- height of the trouble list when position is top or bottom
-            width = 50, -- width of the list when position is left or right
-            icons = true, -- use devicons for filenames
-            mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-            severity = nil, -- nil (ALL) or vim.diagnostic.severity.ERROR | WARN | INFO | HINT
-            fold_open = "", -- icon used for open folds
-            fold_closed = "", -- icon used for closed folds
-            group = true, -- group results by file
-            padding = true, -- add an extra new line on top of the list
-            cycle_results = true, -- cycle item list when reaching beginning or end of list
-            action_keys = { -- key mappings for actions in the trouble list
-                -- map to {} to remove a mapping, for example:
-                -- close = {},
-                close = "q", -- close the list
-                cancel = "<esc>", -- cancel the preview and get back to your last window / buffer / cursor
-                refresh = "r", -- manually refresh
-                jump = {"<cr>", "<tab>", "<2-leftmouse>"}, -- jump to the diagnostic or open / close folds
-                open_split = {"<c-x>"}, -- open buffer in new split
-                open_vsplit = {"<c-v>"}, -- open buffer in new vsplit
-                open_tab = {"<c-t>"}, -- open buffer in new tab
-                jump_close = {"o"}, -- jump to the diagnostic and close the list
-                toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-                switch_severity = "s", -- switch "diagnostics" severity filter level to HINT / INFO / WARN / ERROR
-                toggle_preview = "P", -- toggle auto_preview
-                hover = "K", -- opens a small popup with the full multiline message
-                preview = "p", -- preview the diagnostic location
-                close_folds = {"zM", "zm"}, -- close all folds
-                open_folds = {"zR", "zr"}, -- open all folds
-                toggle_fold = {"zA", "za"}, -- toggle fold of current file
-                previous = "k", -- previous item
-                next = "j" -- next item
+            position = "bottom", 
+            height = 10, 
+            width = 50, 
+            icons = true, 
+            mode = "workspace_diagnostics", 
+            severity = nil, 
+            fold_open = "", 
+            fold_closed = "", 
+            group = true, 
+            padding = true, 
+            cycle_results = true, 
+            action_keys = { 
+                
+                
+                close = "q", 
+                cancel = "<esc>", 
+                refresh = "r", 
+                jump = {"<cr>", "<tab>", "<2-leftmouse>"}, 
+                open_split = {"<c-x>"}, 
+                open_vsplit = {"<c-v>"}, 
+                open_tab = {"<c-t>"}, 
+                jump_close = {"o"}, 
+                toggle_mode = "m", 
+                switch_severity = "s", 
+                toggle_preview = "P", 
+                hover = "K", 
+                preview = "p", 
+                close_folds = {"zM", "zm"}, 
+                open_folds = {"zR", "zr"}, 
+                toggle_fold = {"zA", "za"}, 
+                previous = "k", 
+                next = "j" 
             },
-            multiline = true, -- render multi-line messages
-            indent_lines = true, -- add an indent guide below the fold icons
-            auto_open = false, -- automatically open the list when you have diagnostics
-            auto_close = false, -- automatically close the list when you have no diagnostics
-            auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-            auto_fold = false, -- automatically fold a file trouble list at creation
-            auto_jump = {"lsp_definitions"}, -- for the given modes, automatically jump if there is only a single result
+            multiline = true, 
+            indent_lines = true, 
+            auto_open = false, 
+            auto_close = false, 
+            auto_preview = true, 
+            auto_fold = false, 
+            auto_jump = {"lsp_definitions"}, 
             signs = {
-                -- icons / text used for a diagnostic
+                
                 error = "",
                 warning = "",
                 hint = "",
                 information = "",
                 other = ""
             },
-            use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+            use_diagnostic_signs = false
         }
-    },
-    {
+    }, {
         "kylechui/nvim-surround",
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        version = "*",
         config = function()
             require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
             })
         end
-    },
-
     }
-)
+
+})

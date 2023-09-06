@@ -35,7 +35,7 @@ vnoremap("<leader>y", '"+y') -- yanking to clipboard from visual mode
 -- nnoremap( '[d', 'lua vim.lsp.diagnostic.goto_next()<CR>', '')
 
 -- nvimtree
--- nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
+nnoremap('<leader>t', require("nvim-tree.api").tree.toggle, 'Toggle NvimTree')
 
 -- [[ Advanced Telescope Keymaps ]]
  nnoremap('<leader>sf', require('telescope.builtin').find_files , '[S]earch [F]iles respect .gitignore' )

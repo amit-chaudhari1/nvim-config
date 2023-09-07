@@ -8,9 +8,9 @@ local sources = {
     -- keyword_length
     -- max_item_count
     -- priority
-    -- {name = 'nvim_lsp'},
+    {name = 'nvim_lsp'},
     {name = 'calc'},
-    -- {name = 'git'},
+    {name = 'git'},
     {name = 'luasnip', max_item_count = 5},
     {name = 'nvim_lua'},
     {name = 'buffer', max_item_count = 5},

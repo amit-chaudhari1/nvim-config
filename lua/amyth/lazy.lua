@@ -10,12 +10,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
--- next to setup lazy
--- require("lazy").setup(plugins, opts)
--- plugins: this should be a table or a string
---     table: a list with your Plugin Spec
---     string: a Lua module name that contains your Plugin Spec. See Structuring Your Plugins
--- opts: see Configuration (optional)
 
 require("lazy").setup({
     {"junegunn/goyo.vim"}, {"saadparwaiz1/cmp_luasnip"},

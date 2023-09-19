@@ -1,4 +1,3 @@
- vim.cmd.colorscheme "catppuccin"
 
 local Utils = require("amyth.utils")
 -- local cmp = require("cmp")
@@ -216,4 +215,4 @@ local keymaps = {}
 
 -- [[ FUGITIVE KEYMAPS ]]
 
-
+return keymaps

@@ -1,8 +1,9 @@
 require("amyth.utils")
 require("amyth.lazy")
--- require("amyth.dapui").setup()
 require("amyth.options")
 require("amyth.keymaps")
+
+-- require("amyth.dapui").setup()
 -- require("amyth.lsp-config")
 -- require("amyth.lua-snip-config")
 -- require("amyth.completions")

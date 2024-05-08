@@ -30,6 +30,10 @@ local ssf = s("ssf", {
   t"ssf ffs fsfda"
 })
 
-table.insert(snippets,ssf)
+local twoDVec = s("2DVec", {
+  t"vector<vector<int>> a(n, vector<int> (n,0));" 
+})
+
+table.insert(snippets,twoDVec)
 
 return snippets, autosnippets

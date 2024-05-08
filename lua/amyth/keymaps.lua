@@ -51,7 +51,17 @@ nnoremap('<leader><space>', require('telescope.builtin').keymaps, 'List out all 
 nnoremap('<leader>/',
 	function() require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
 		previewer = false, }) end, '[/] Fuzzily search in current buffer]' )
+
+-- [[ DAP KEYMAPS]]
 nnoremap('<leader>dt', require("dapui").toggle, 'Toggle DAP UI')
+nnoremap('<leader>te', ':!g++ sol.cpp && ./a.out < i > o.actual <CR>' , 'TEST YOUR CODEFORCES SOL.CPP')
+
+-- [[ LAZY GIT + FU_GIT_IVE KEYMAPS ]]
+local function invokelzg()
+	vim.cmd[[LazyGit]]
+end
+
+nnoremap('<leader>lg', invokelzg,"Invokes LazyGit")
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -114,31 +124,31 @@ function keymaps.on_attach (_,_)
 	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', vim.lsp.buf.format or vim.lsp.buf.formatting,
 	-- 	'Format current buffer with LSP' })
 end
-return keymaps
 
 -- [[ COMPLETIONS KEYMAPS ]]
--- inoremap('<C-space>', cmp.mapping.complete(), 'Invoke CMP Completions which are LSP and LuaSnip exclusive')
--- inoremap('<Tab>', function()
--- 	if cmp.visible() then
--- 		cmp.select_next_item()
--- 	elseif require('luasnip').expand_or_jumpable() then
--- 		require('luasnip').expand_or_jump()
--- 		else cmp.mapping.complete()
--- 	end
--- 	end
--- )
--- inoremap('<S-Tab>', function()
--- 	if cmp.visible() then
--- 		cmp.select_prev_item()
--- 	elseif require('luasnip').expand_or_jumpable() then
--- 		require('luasnip').expand_or_jump()
--- 		else cmp.mapping.complete()
--- 	end
--- 	end
--- )
---
--- inoremap('C-d',  cmp.mapping.scroll_docs (-4))
--- inoremap('C-f',  cmp.mapping.scroll_docs (4))
+local cmp = require("cmp")
+inoremap('<C-space>', cmp.mapping.complete(), "Invoke CMP Completions")
+
+inoremap('<Tab>', function()
+	if cmp.visible() then
+		cmp.select_next_item()
+	elseif require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+		else cmp.mapping.complete()
+	end
+	end
+, "Context Dependent: select next or complete the snip")
+
+
+inoremap('<S-Tab>', function()
+	if cmp.visible() then
+		cmp.select_prev_item()
+	elseif require('luasnip').expand_or_jumpable() then
+		require('luasnip').expand_or_jump()
+		else cmp.mapping.complete()
+	end
+	end
+, "Context Dependent: select prev or complete the snip")
 
 -- inoremap('<CR>', function()
 -- 	if cmp.visible() then
@@ -149,37 +159,6 @@ return keymaps
 -- 		-- pressed enter put in a carriage return line
 -- 	end end, '')
 
-
--- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
--- ['<C-f>'] = cmp.mapping.scroll_docs(4),
--- ['<C-Space>'] = cmp.mapping.complete(),
--- ['<CR>'] = cmp.mapping.confirm {
--- behavior = cmp.ConfirmBehavior.Replace,
--- select = true,
--- },
--- ['<Tab>'] = cmp.mapping(function(fallback)
--- if cmp.visible() then
--- cmp.select_next_item()
--- elseif luasnip.expand_or_jumpable() then
--- luasnip.expand_or_jump()
--- else
--- fallback()
--- end
--- end, { 'i', 's' }),
--- ['<S-Tab>'] = cmp.mapping(function(fallback)
--- if cmp.visible() then
--- cmp.select_prev_item()
--- elseif luasnip.jumpable(-1) then
--- luasnip.jump(-1)
--- else
--- fallback()
--- end
--- end, { 'i', 's' }),
--- }
-
-
--- local cmp_keymaps = function (_,_)
--- end
 
 -- [[ TREE SITTER KEYMAPS ]]
 -- -- incremental keymaps
@@ -218,5 +197,5 @@ return keymaps
 -- swap_previous = {
 -- ['<leader>A'] = '@parameter.inner',
 
--- [[ FUGITIVE KEYMAPS ]]
 
+return keymaps

@@ -12,12 +12,43 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+    {
+        "elixir-tools/elixir-tools.nvim",
+        version = "*",
+        event = {"BufReadPre", "BufNewFile"},
+        config = function()
+            local elixir = require("elixir")
+            local elixirls = require("elixir.elixirls")
+
+            elixir.setup {
+                nextls = {enable = true},
+                credo = {},
+                elixirls = {
+                    enable = true,
+                    settings = elixirls.settings {
+                        dialyzerEnabled = false,
+                        enableTestLenses = false
+                    },
+                    on_attach = function(client, bufnr)
+                        vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>",
+                                       {buffer = true, noremap = true})
+                        vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>",
+                                       {buffer = true, noremap = true})
+                        vim.keymap.set("v", "<space>em",
+                                       ":ElixirExpandMacro<cr>",
+                                       {buffer = true, noremap = true})
+                    end
+                }
+            }
+        end,
+        dependencies = {"nvim-lua/plenary.nvim"}
+    }, {'windwp/nvim-autopairs', event = "InsertEnter", opts = {}},
     {"junegunn/goyo.vim"}, {"saadparwaiz1/cmp_luasnip"},
     {"rafamadriz/friendly-snippets"}, {"junegunn/limelight.vim"},
     {"simrat39/rust-tools.nvim"}, {"xiyaowong/transparent.nvim"}, {
         "kyazdani42/nvim-tree.lua",
         dependencies = {
-            {"kyazdani42/nvim-web-devicons"}, {
+            {"nvim-neotest/nvim-nio"}, {"kyazdani42/nvim-web-devicons"}, {
                 "JMarkin/nvim-tree.lua-float-preview",
                 lazy = true,
                 opts = {
@@ -62,9 +93,10 @@ require("lazy").setup({
         cond = vim.fn.executable("make") == 1
     }, "sbdchd/neoformat", {"b0o/schemastore.nvim"},
     {"amitchaudhari9121/karma.nvim"}, {"ellisonleao/gruvbox.nvim"},
-    {"folke/tokyonight.nvim"}, {"kdheepak/monochrome.nvim"},
-    {"mjlbach/onedark.nvim"}, {"catppuccin/nvim", name = "catppuccin"},
-    {"tpope/vim-fugitive"}, {"tpope/vim-rhubarb"}, {"numToStr/Comment.nvim"},
+    {"rose-pine/neovim", name = "rose-pine"}, {"folke/tokyonight.nvim"},
+    {"kdheepak/monochrome.nvim"}, {"mjlbach/onedark.nvim"},
+    {"catppuccin/nvim", name = "catppuccin"}, {"tpope/vim-fugitive"},
+    {"tpope/vim-rhubarb"}, {"numToStr/Comment.nvim"},
     {"nvim-treesitter/nvim-treesitter"},
     {"nvim-treesitter/nvim-treesitter-textobjects"}, {"neovim/nvim-lspconfig"},
     {"williamboman/mason.nvim"}, {"williamboman/mason-lspconfig.nvim"},
